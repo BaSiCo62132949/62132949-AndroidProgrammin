@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Ex1_ConstraintLayout</string>
+    <string name="string_singapore_image">string/singapore_image</string>
+    <string name="singapore">Singapo</string>
+</resources>
