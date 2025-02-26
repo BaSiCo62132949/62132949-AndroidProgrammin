@@ -14,7 +14,7 @@ Màn hình giao diện chính của các ứng dụng:
 
 ### [Ex4_AddSubMulDiv_Onclick](#ex4)
 
-<img src="image/1.png" alt="Screenshot of the main activity" width="400" height="700">
+<img src="image/ex4.png" alt="Screenshot of the main activity" width="400" height="700">
 
 ### [App tính BMI](#app-tính-bmi)
 
