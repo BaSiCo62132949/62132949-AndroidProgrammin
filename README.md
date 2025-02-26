@@ -3,7 +3,7 @@ Lưu các bài tập thực hành trong lập trình android
 
 Màn hình giao diện chính của các ứng dụng:
 
-[Link Text](#bmi)
+[App tính BMI](#bmi)
 
 [Ex3_SimpleSumApp](exe): Tính tổng
 
