@@ -3,4 +3,4 @@ Lưu các bài tập thực hành trong lập trình android
 
 màn hình giao diện chính của ứng dụng:
 
-![Screenshot of the main activity](image/1.png)
+<img src="image/1.png" alt="Screenshot of the main activity" width="400" height="300">
