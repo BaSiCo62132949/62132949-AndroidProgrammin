@@ -5,6 +5,7 @@ Màn hình giao diện chính của các ứng dụng:
 
 - [Ex3_SimpleSumApp (Tính tổng)](#ex3_simplesumapp)
 - [Ex4_AddSubMulDiv_Onclick](#ex4)
+- [Ex5_AddSubMulDiv_Anynomous](#ex5)
 - [App tính BMI](#app-tính-bmi)
 
 
@@ -15,6 +16,10 @@ Màn hình giao diện chính của các ứng dụng:
 ### [Ex4_AddSubMulDiv_Onclick](#ex4)
 
 <img src="image/ex4.png" alt="Screenshot of the main activity" width="400" height="700">
+
+### [Ex5_AddSubMulDiv_Anynomous](#ex5)
+
+<img src="image/ex5.png" alt="Screenshot of the main activity" width="400" height="700">
 
 ### [App tính BMI](#app-tính-bmi)
 
