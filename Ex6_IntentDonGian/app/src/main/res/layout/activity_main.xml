@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="center_vertical|center_horizontal"
     tools:context=".MainActivity">
@@ -12,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="ĐÂY LÀ MÀN HÌNH CHÍNH Ở ĐÂY"
         android:textSize="30dp"
-        android:textColor=""
+        android:textColor="#3F51B5"
         android:textStyle="bold"
         android:padding="20dp"/>
     <ImageView
