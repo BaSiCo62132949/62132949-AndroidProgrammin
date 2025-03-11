@@ -23,7 +23,6 @@ Màn hình giao diện chính của các ứng dụng:
 <img src="image/ex6.png" alt="Screenshot of the main activity" width="400" height="700">
 
 ### Ex7_Intent Login
-Đăng nhập màn hình không được, nhấn Xác nhận màn hình không chuyển sang màn HomeActivity
 <img src="image/ex7.png" alt="Screenshot of the main activity" width="400" height="700">
 
 ### App tính BMI
