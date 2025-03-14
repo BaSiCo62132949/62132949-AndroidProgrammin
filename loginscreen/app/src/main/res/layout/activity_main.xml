@@ -4,9 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@drawable/loginbkg_1"
     tools:context=".MainActivity">
 
     <androidx.cardview.widget.CardView
@@ -17,12 +18,17 @@
         app:cardMaxElevation="20dp"
         android:background="@drawable/custom_edittext">
 
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center_horizontal"
             android:padding="24dp">
+
+
+
 
             <TextView
                 android:layout_width="match_parent"
@@ -39,7 +45,7 @@
                 android:layout_height="50dp"
                 android:id="@+id/username"
                 android:background="@drawable/custom_edittext"
-                android:drawableLeft="@drawable/ic_baseline_person_24"
+                android:drawableLeft="@drawable/person_24dp"
                 android:drawablePadding="8dp"
                 android:hint="Username"
                 android:padding="8dp"
@@ -52,7 +58,7 @@
                 android:layout_height="50dp"
                 android:id="@+id/password"
                 android:background="@drawable/custom_edittext"
-                android:drawableLeft="@drawable/ic_launcher_foreground"
+                android:drawableLeft="@drawable/lock_24dp"
                 android:drawablePadding="8dp"
                 android:hint="Password"
                 android:padding="8dp"
@@ -64,7 +70,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:id="@+id/LoginButton"
+                android:id="@+id/loginButton"
                 android:text="Login"
                 android:textSize="18sp"
                 android:layout_marginTop="30dp"
@@ -76,14 +82,14 @@
     </androidx.cardview.widget.CardView>
 
     <TextView
+        android:id="@+id/signupText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         android:padding="8dp"
         android:text="Not yet registered? signUp Now"
-        android:textSize="14sp"
         android:textAlignment="center"
-        android:id="@+id/signupText"
         android:textColor="@color/purple"
-        android:layout_marginBottom="20dp"/>
+        android:textSize="14sp" />
 
 </LinearLayout>
