@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+    
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -13,36 +14,38 @@
         android:layout_marginTop="20dp">
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="42dp"
             android:id="@+id/amazonName"
-            android:text="Amazon"
-            android:textSize="40sp"
-            android:textColor="@color/lavender"
+            android:layout_width="187dp"
+            android:layout_height="56dp"
             android:layout_marginStart="18dp"
             android:layout_marginTop="40dp"
-            android:fontFamily="@font/poppins_semibold"
-            app:layout_constraintTop_toTopOf="parent"
+            android:fontFamily=""
+            android:text="Shopee"
+            android:textColor="#F44336"
+            android:textSize="40sp"
+            app:layout_constraintEnd_toStartOf="@+id/amazonImage"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/amazonImage"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/amazonDesc"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/amazonDesc"
-            android:text="Shop from A to Z"
-            android:textSize="14sp"
             android:layout_marginStart="18dp"
-            android:textColor="@color/lavender"
+            android:layout_marginTop="4dp"
+            android:text="Shop from A to Z"
+            android:textColor="#A41D13"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@+id/amazonImage"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/amazonName"
-            app:layout_constraintEnd_toStartOf="@+id/amazonImage"/>
+            app:layout_constraintTop_toBottomOf="@id/amazonName" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="160dp"
             android:id="@+id/amazonImage"
-            android:src="@drawable/R"
+            android:src="@drawable/shope"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="16dp"
@@ -72,17 +75,18 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
                     <TextView
+                        android:id="@+id/clothingName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/clothingName"
-                        android:text="Clothing"
-                        android:textSize="20sp"
-                        android:textColor="@color/lavender"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:layout_marginTop="10dp"
+                        android:layout_below="@+id/clothingImage"
                         android:layout_centerHorizontal="true"
-                        android:layout_below="@+id/clothingImage"/>
+                        android:layout_marginTop="10dp"
+
+                        android:text="Áo"
+                        android:textColor="#F44336"
+                        android:textSize="20sp" />
 
                     <ImageView
                         android:layout_width="70dp"
@@ -112,8 +116,7 @@
                         android:id="@+id/elecName"
                         android:text="Electronics"
                         android:textSize="20sp"
-                        android:textColor="@color/lavender"
-                        android:fontFamily="@font/poppins_semibold"
+                        android:textColor="#F44336"
                         android:layout_marginTop="10dp"
                         android:layout_centerHorizontal="true"
                         android:layout_below="@+id/elecImage"/>
@@ -159,8 +162,7 @@
                         android:id="@+id/homeName"
                         android:text="Home"
                         android:textSize="20sp"
-                        android:textColor="@color/lavender"
-                        android:fontFamily="@font/poppins_semibold"
+                        android:textColor="#F44336"
                         android:layout_marginTop="10dp"
                         android:layout_centerHorizontal="true"
                         android:layout_below="@+id/homeImage"/>
@@ -192,8 +194,7 @@
                         android:id="@+id/beautyName"
                         android:text="Beauty"
                         android:textSize="20sp"
-                        android:textColor="@color/lavender"
-                        android:fontFamily="@font/poppins_semibold"
+                        android:textColor="#F44336"
                         android:layout_marginTop="10dp"
                         android:layout_centerHorizontal="true"
                         android:layout_below="@+id/beautyImage"/>
@@ -239,8 +240,7 @@
                         android:id="@+id/pharmName"
                         android:text="Pharmacy"
                         android:textSize="20sp"
-                        android:textColor="@color/lavender"
-                        android:fontFamily="@font/poppins_semibold"
+                        android:textColor="#F44336"
                         android:layout_marginTop="10dp"
                         android:layout_centerHorizontal="true"
                         android:layout_below="@+id/pharmImage"/>
@@ -272,8 +272,7 @@
                         android:id="@+id/grocName"
                         android:text="Groceries"
                         android:textSize="20sp"
-                        android:textColor="@color/lavender"
-                        android:fontFamily="@font/poppins_semibold"
+                        android:textColor="#F44336"
                         android:layout_marginTop="10dp"
                         android:layout_centerHorizontal="true"
                         android:layout_below="@+id/grocImage"/>
