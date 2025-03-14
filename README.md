@@ -9,6 +9,7 @@ Màn hình giao diện chính của các ứng dụng:
 - [Ex6_Intent DonGian](#ex6-intent-dongian)
 - [App tính BMI](#app-tinh-bmi)
 - [Ex7_Intent Login](#ex7_intent-login)
+- [Login screen] (#login-screen)
 
 ### Ex3 SimpleSumApp - Tính tổng
 <img src="image/ex3.png" alt="Screenshot of the main activity" width="400" height="700">
