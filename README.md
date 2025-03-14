@@ -10,6 +10,7 @@ Màn hình giao diện chính của các ứng dụng:
 - [App tính BMI](#app-tinh-bmi)
 - [Ex7_Intent Login](#ex7_intent-login)
 - [Login screen] (#login-screen)
+- [Modern Dashboard] (#modern-dashboard)
 
 ### Ex3 SimpleSumApp - Tính tổng
 <img src="image/ex3.png" alt="Screenshot of the main activity" width="400" height="700">
@@ -28,6 +29,9 @@ Màn hình giao diện chính của các ứng dụng:
 
 ### App tính BMI
 <img src="image/1.png" alt="Screenshot of the main activity" width="400" height="700">
+
+### Modern Dashboard
+<img src="image/shopee.png" alt="Screenshot of the main activity" width="400" height="700">
 
 
 
