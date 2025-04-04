@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="26dp"
+    android:gravity="center"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="20dp">
+
+        <Button
+            android:id="@+id/btn_Cn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chức năng 1"
+            android:layout_marginEnd="20dp"/>
+
+        <Button
+            android:id="@+id/btn_Cn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:text="Chức năng 2" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="20dp">
+
+        <Button
+            android:id="@+id/btn_Cn3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chức năng 3"
+            android:layout_marginEnd="20dp"/>
+
+        <Button
+            android:id="@+id/btn_Cn4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="About me"
+            android:layout_marginEnd="20dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>
