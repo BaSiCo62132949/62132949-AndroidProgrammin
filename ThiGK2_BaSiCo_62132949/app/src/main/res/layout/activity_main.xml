@@ -49,8 +49,7 @@
             android:id="@+id/btn_Cn4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="About me"
-            android:layout_marginEnd="20dp"/>
+            android:text="Chức năng 4" />
 
     </LinearLayout>
 

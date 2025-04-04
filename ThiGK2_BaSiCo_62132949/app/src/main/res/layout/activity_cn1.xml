@@ -7,61 +7,98 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".ActivityCn1">
+    tools:context=".ActivityCn2">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Mốc thời gian chiến dịch Hồ Chí Minh - Toàn Thắng"
+        android:text="Quiz"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="24dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Thang : "
-        android:textSize="20sp"
+        android:gravity="center"
         android:layout_marginBottom="8dp"/>
 
-    <EditText
-        android:id="@+id/NhapThang"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="numberDecimal|numberSigned"
-        android:layout_marginBottom="16dp"/>
+    <ImageView
+        android:id="@+id/imageQuiz"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        app:srcCompat="@drawable/Logo50Nam" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Năm : "
-        android:textSize="20sp"
-        android:layout_marginBottom="8dp"/>
-
-    <EditText
-        android:id="@+id/NhapNam"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"/>
-
-    <Button
-        android:id="@+id/btnDungSai"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Kiểm tra Đúng/Sai"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="24dp"
-        android:layout_marginTop="16dp"/>
-
-    <Button
-        android:id="@+id/KetQua"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Kết Quả: "
-        android:textSize="20sp"
+        android:text="Mốc thời gian chiến dich Hồ Chí Minh - Toàn Thắng"
+        android:textSize="24sp"
         android:textStyle="bold"
-        android:background="#EEEEEE"
-        android:layout_marginBottom="24dp"/>
+        android:gravity="center"
+        android:layout_marginBottom="8dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tháng :"
+            android:textSize="16sp"
+            android:layout_marginEnd="8dp"/>
+
+        <EditText
+            android:id="@+id/editThang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="10"
+            android:inputType="number"
+            android:maxLength="2" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="24dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Năm :"
+            android:textSize="16sp"
+            android:layout_marginEnd="8dp"/>
+
+        <EditText
+            android:id="@+id/editNam"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="number"
+            android:maxLength="4" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonQuiz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="KiemTra Đúng/Sai"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/textHienThi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:background="#E1CBCB" />
 
 
 </LinearLayout>

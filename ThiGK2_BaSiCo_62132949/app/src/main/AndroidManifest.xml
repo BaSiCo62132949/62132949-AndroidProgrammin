@@ -13,6 +13,9 @@
         android:theme="@style/Theme.ThiGK2_BaSiCo_62132949"
         tools:targetApi="31">
         <activity
+            android:name=".Item3Activity"
+            android:exported="false" />
+        <activity
             android:name=".ActivityCn4"
             android:exported="false" />
         <activity
@@ -33,6 +36,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ChucNang3Activity" />
+        <activity android:name=".Item3Activity"
+            android:label="@string/item3_activity_title" />
     </application>
 
 </manifest>
