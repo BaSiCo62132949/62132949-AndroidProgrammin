@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Fragment_Staticlly" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">#C8A746</item>
     </style>
 
     <style name="Theme.Fragment_Staticlly" parent="Base.Theme.Fragment_Staticlly" />
