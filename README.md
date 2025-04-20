@@ -11,6 +11,10 @@ Màn hình giao diện chính của các ứng dụng:
 - [Ex7_Intent Login](#ex7_intent-login)
 - [Login screen](#login-screen)
 - [Modern Dashboard](#modern-dashboard)
+- [Fragment Static](#fragment-static)
+- [Fragments Dynamic](#fragments-dynamic)
+- [Replacing Fragments Dynamically](#replacing-fragments-dynamically)
+
 
 ### Ex3_SimpleSumApp - Tính tổng
 <img src="image/ex3.png" alt="Screenshot of the main activity" width="400" height="700">
