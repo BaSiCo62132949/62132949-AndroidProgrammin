@@ -1,3 +1,105 @@
 <resources>
-    <string name="app_name">BaiThiCK_62132949</string>
+    <string name="app_name">Chuyển Đổi Đơn Vị và Tiền Tệ</string>
+
+    <!-- Màn hình Chào mừng -->
+    <string name="welcome_title">Chào mừng!</string>
+    <string name="welcome_description">Ứng dụng giúp bạn chuyển đổi đơn vị và tiền tệ nhanh chóng, dễ dàng.</string>
+    <string name="button_start_now">Bắt đầu ngay</string>
+    <string name="button_tutorial">Xem hướng dẫn</string>
+
+    <!-- Màn hình chính - Thanh điều hướng dưới -->
+    <string name="title_history">Lịch sử</string>
+    <string name="title_units">Đơn vị</string>
+    <string name="title_currency">Tiền tệ</string>
+    <string name="title_settings">Cài đặt</string>
+    <string name="fab_add_description">Chuyển đổi nhanh</string>
+
+    <!-- Bộ chuyển đổi đơn vị -->
+    <string name="hint_enter_value">Nhập giá trị</string>
+    <string name="hint_result">Kết quả</string>
+    <string name="button_swap">Đổi đơn vị</string>
+    <string name="button_save_history">Lưu vào lịch sử</string>
+    <string-array name="unit_types">
+        <item>Chiều dài</item>
+        <item>Khối lượng</item>
+        <item>Nhiệt độ</item>
+        <item>Thời gian</item>
+        <item>Diện tích</item>
+    </string-array>
+    <string-array name="length_units">
+        <item>Mét (m)</item>
+        <item>Centimét (cm)</item>
+        <item>Inch (in)</item>
+        <item>Feet (ft)</item>
+        <item>Kilomét (km)</item>
+        <item>Millimét (mm)</item>
+    </string-array>
+    <string-array name="weight_units">
+        <item>Kilogram (kg)</item>
+        <item>Gram (g)</item>
+        <item>Pound (lb)</item>
+        <item>Ounce (oz)</item>
+        <item>Milligram (mg)</item>
+    </string-array>
+    <string-array name="temperature_units">
+        <item>Celsius (°C)</item>
+        <item>Fahrenheit (°F)</item>
+        <item>Kelvin (K)</item>
+    </string-array>
+    <string-array name="time_units">
+        <item>Giây (s)</item>
+        <item>Phút (min)</item>
+        <item>Giờ (h)</item>
+        <item>Ngày (day)</item>
+    </string-array>
+    <string-array name="area_units">
+        <item>Mét vuông (m²)</item>
+        <item>Kilomét vuông (km²)</item>
+        <item>Hecta (ha)</item>
+        <item>Feet vuông (ft²)</item>
+        <item>Mẫu Anh (ac)</item>
+    </string-array>
+
+    <!-- Bộ chuyển đổi tiền tệ -->
+    <string name="hint_enter_amount">Nhập số tiền</string>
+    <string name="button_swap_currency">Đổi tiền tệ</string>
+    <string name="button_refresh_rates">Làm mới tỷ giá</string>
+    <string name="text_updating_rates">Đang cập nhật tỷ giá...</string>
+    <string name="text_update_error">Cập nhật thất bại!</string>
+    <string name="text_last_update">Cập nhật lần cuối: %s</string>
+    <string name="error_api_error">Lỗi API: %s</string>
+    <string name="error_parsing_error">Lỗi xử lý dữ liệu tỷ giá.</string>
+    <string name="error_network_error">Không thể tải tỷ giá. Vui lòng kiểm tra kết nối mạng.</string>
+    <string name="error_rate_not_found">Lỗi tỷ giá</string>
+
+    <!-- Lịch sử -->
+    <string name="hint_search_history">Tìm theo loại, đơn vị...</string>
+    <string name="text_no_history">Chưa có lịch sử chuyển đổi.</string>
+    <string name="text_no_search_results">Không tìm thấy kết quả cho %s</string>
+    <string name="button_delete_all_history">Xóa toàn bộ lịch sử</string>
+    <string name="dialog_title_delete_item">Xác nhận xóa</string>
+    <string name="dialog_message_delete_item">Bạn có chắc muốn xóa mục lịch sử này không?</string>
+    <string name="dialog_title_delete_all">Xác nhận xóa tất cả</string>
+    <string name="dialog_message_delete_all">Bạn có chắc muốn xóa TOÀN BỘ lịch sử chuyển đổi? Hành động này không thể hoàn tác.</string>
+    <string name="button_delete">Xóa</string>
+    <string name="button_cancel">Hủy</string>
+    <string name="toast_history_saved">Đã lưu vào lịch sử</string>
+    <string name="toast_history_save_error">Lỗi khi lưu lịch sử</string>
+    <string name="toast_history_deleted">Đã xóa mục lịch sử</string>
+    <string name="toast_history_delete_error">Lỗi khi xóa mục lịch sử</string>
+    <string name="toast_all_history_deleted">Đã xóa %d mục lịch sử</string>
+    <string name="toast_no_history_to_delete">Không có lịch sử để xóa.</string>
+    <string name="toast_no_valid_data_to_save">Không có dữ liệu hợp lệ để lưu</string>
+    <string name="text_result_invalid">Không hợp lệ</string>
+    <string name="text_result_error">Lỗi</string>
+
+    <!-- Cài đặt -->
+    <string name="settings_section_interface">Giao diện</string>
+    <string name="settings_dark_mode">Chế độ tối</string>
+    <string name="settings_section_info">Thông tin</string>
+    <string name="settings_about_app">Giới thiệu ứng dụng</string>
+    <string name="dialog_title_about">Giới thiệu ứng dụng</string>
+    <string name="dialog_message_about">Chuyển Đổi Đơn Vị và Tiền Tệ\n\nPhiên bản: 1.0\nSinh viên: %1$s\nMSSV: %2$s\nĐồ án môn học: %3$s\n\nỨng dụng đơn giản để chuyển đổi các đơn vị và tiền tệ phổ biến.</string>
+    <string name="button_close">Đóng</string>
+    <string name="settings_language">Ngôn ngữ</string>
 </resources>
