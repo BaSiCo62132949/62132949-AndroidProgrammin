@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="32dp"
+    tools:context=".WelcomeActivity">
+
+    <TextView
+        android:id="@+id/textViewTieuDeChaoMung"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chào mừng bạn!"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textViewMoTaNgan"
+        app:layout_constraintVertical_bias="0.3"
+        app:layout_constraintVertical_chainStyle="packed"/>
+
+    <TextView
+        android:id="@+id/textViewMoTaNgan"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Ứng dụng giúp bạn chuyển đổi đơn vị và tiền tệ một cách nhanh chóng và dễ dàng."
+        android:textSize="16sp"
+        android:textAlignment="center"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTieuDeChaoMung"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonBatDauNgay" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonBatDauNgay"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Bắt đầu ngay"
+        android:layout_marginTop="48dp"
+        app:icon="@drawable/start"
+        app:iconGravity="textStart"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMoTaNgan"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonHuongDan"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonHuongDan"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Xem hướng dẫn"
+        android:layout_marginTop="16dp"
+        app:icon="@drawable/help"
+        app:iconGravity="textStart"
+        app:layout_constraintTop_toBottomOf="@+id/buttonBatDauNgay"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
