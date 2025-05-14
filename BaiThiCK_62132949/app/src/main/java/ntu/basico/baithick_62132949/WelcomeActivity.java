@@ -44,7 +44,6 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(WelcomeActivity.this, "Chức năng hướng dẫn sẽ được cập nhật!", Toast.LENGTH_SHORT).show();
-                // TODO: Triển khai chức năng hướng dẫn (ví dụ: hiển thị Dialog, hoặc Activity/Fragment mới)
             }
         });
     }

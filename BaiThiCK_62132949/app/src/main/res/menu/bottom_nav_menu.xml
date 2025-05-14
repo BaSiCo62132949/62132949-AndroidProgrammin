@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/navigation_lich_su"
+        android:icon="@drawable/history1"
+        android:title="Lịch sử"/>
+
+    <item
+        android:id="@+id/navigation_don_vi"
+        android:icon="@drawable/donvi"
+        android:title="Đơn vị"/>
+
+    <!-- Mục trống ở giữa cho FAB -->
+    <item
+        android:id="@+id/placeholder"
+        android:title=""
+        android:enabled="false"/>
+
+    <item
+        android:id="@+id/navigation_tien_te"
+        android:icon="@drawable/money"
+        android:title="Tiền tệ"/>
+
+    <item
+        android:id="@+id/navigation_cai_dat"
+        android:icon="@drawable/settings"
+        android:title="Cài đặt"/>
+
+</menu>

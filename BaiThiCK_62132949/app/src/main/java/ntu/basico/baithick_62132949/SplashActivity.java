@@ -28,7 +28,7 @@ public class SplashActivity extends AppCompatActivity {
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashActivity.this, ntu.basico.baithick_62132949.WelcomeActivity.class); // Hoặc MainActivity nếu bỏ Welcome
+                Intent intent = new Intent(SplashActivity.this, ntu.basico.baithick_62132949.WelcomeActivity.class);
                 startActivity(intent);
                 finish();
             }

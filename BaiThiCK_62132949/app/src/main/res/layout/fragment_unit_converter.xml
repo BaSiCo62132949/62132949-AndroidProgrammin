@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".UnitConverterFragment">
+
+    <!-- Tab Layout để chọn loại đơn vị -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayoutLoaiDonVi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabMode="scrollable" />
+
+    <!-- Khu vực nội dung chuyển đổi -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutNguon"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Nhập giá trị"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/spinnerDonViNguon"
+                app:layout_constraintWidth_percent="0.6">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextGiaTriNguon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Spinner chọn đơn vị nguồn -->
+            <Spinner
+                android:id="@+id/spinnerDonViNguon"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintTop_toTopOf="@+id/textInputLayoutNguon"
+                app:layout_constraintBottom_toBottomOf="@+id/textInputLayoutNguon"
+                app:layout_constraintStart_toEndOf="@+id/textInputLayoutNguon"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+
+            <!-- Icon chuyển đổi (hoán đổi) -->
+            <ImageButton
+                android:id="@+id/buttonHoanDoi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/swap"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Hoán đổi đơn vị"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNguon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+
+            <!-- Ô hiển thị kết quả -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutDich"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Kết quả"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/buttonHoanDoi"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/spinnerDonViDich"
+                app:layout_constraintWidth_percent="0.6">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textViewKetQua"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    android:focusable="false"
+                    android:clickable="false"
+                    android:longClickable="false"
+                    android:textIsSelectable="true"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Spinner chọn đơn vị đích -->
+            <Spinner
+                android:id="@+id/spinnerDonViDich"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintTop_toTopOf="@+id/textInputLayoutDich"
+                app:layout_constraintBottom_toBottomOf="@+id/textInputLayoutDich"
+                app:layout_constraintStart_toEndOf="@+id/textInputLayoutDich"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+
+            <!-- Nút Lưu  -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonLuu"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lưu lịch sử"
+                app:icon="@drawable/save"
+                android:layout_marginTop="32dp"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDich"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>
