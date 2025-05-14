@@ -85,12 +85,12 @@ public class MainActivity extends AppCompatActivity {
                     v.post(() -> {
                         Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragmentContainer);
                         if (currentFragment instanceof ntu.basico.baithick_62132949.UnitConverterFragment) {
-                            ((ntu.basico.baithick_62132949.UnitConverterFragment) currentFragment).ChonTabMacDinh(0); // Chọn tab đầu tiên (ví dụ)
+                            ((ntu.basico.baithick_62132949.UnitConverterFragment) currentFragment).ChonLoaiDonViMacDinh(0); // Chọn tab đầu tiên (ví dụ)
                         }
                     });
                 } else {
                     unitConverterFragment = new ntu.basico.baithick_62132949.UnitConverterFragment();
-                    unitConverterFragment.ChonTabMacDinh(0); // Chọn tab đầu tiên (ví dụ)
+                    unitConverterFragment.ChonLoaiDonViMacDinh(0); // Chọn tab đầu tiên (ví dụ)
                     bottomNavigation.setSelectedItemId(R.id.navigation_don_vi);
                 }
 

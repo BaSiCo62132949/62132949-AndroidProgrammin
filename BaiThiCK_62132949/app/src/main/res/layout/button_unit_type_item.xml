@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:gravity="center"
+    android:background="#CDB8B8"
+    android:layout_marginStart="4dp"
+    android:layout_marginEnd="4dp"
+    android:clickable="true"
+    android:focusable="true">
+
+    <ImageView
+        android:id="@+id/imageViewUnitTypeIcon"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="#D15151"
+        tools:src="@drawable/ic_type_length" />
+
+
+    <TextView
+        android:id="@+id/textViewUnitTypeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textSize="12sp"
+        android:textColor="#AD0B0B"
+        tools:text="Độ dài" />
+</LinearLayout>

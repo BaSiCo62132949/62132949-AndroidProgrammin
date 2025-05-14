@@ -1,23 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="?attr/colorSurface"
     tools:context=".UnitConverterFragment">
 
-    <!-- Tab Layout để chọn loại đơn vị -->
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayoutLoaiDonVi"
-        android:layout_width="match_parent"
+    <!-- Thanh chọn loại đơn vị (dùng HorizontalScrollView + LinearLayout hoặc RecyclerView ngang) -->
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollViewUnitTypes"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:tabMode="scrollable" />
+        android:scrollbars="none"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:background="@color/unit_type_button_selected_bg">
 
-    <!-- Khu vực nội dung chuyển đổi -->
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        <LinearLayout
+            android:id="@+id/linearLayoutUnitTypeButtons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp">
+
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Khu vực chuyển đổi chính -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollViewUnitTypes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:fillViewport="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,101 +47,151 @@
             android:layout_height="wrap_content"
             android:padding="16dp">
 
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutNguon"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <!-- CardView cho đơn vị nguồn -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardViewSource"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="Nhập giá trị"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/spinnerDonViNguon"
-                app:layout_constraintWidth_percent="0.6">
+                app:layout_constraintEnd_toEndOf="parent">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/editTextGiaTriNguon"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="numberDecimal" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:background="#DAA796"
+                    android:padding="16dp">
 
-            <!-- Spinner chọn đơn vị nguồn -->
-            <Spinner
-                android:id="@+id/spinnerDonViNguon"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="8dp"
-                app:layout_constraintTop_toTopOf="@+id/textInputLayoutNguon"
-                app:layout_constraintBottom_toBottomOf="@+id/textInputLayoutNguon"
-                app:layout_constraintStart_toEndOf="@+id/textInputLayoutNguon"
-                app:layout_constraintEnd_toEndOf="parent"
-                />
+                    <TextView
+                        android:id="@+id/textViewLabelSource"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Từ"
+                        android:textAppearance="?attr/textAppearanceCaption"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"/>
 
-            <!-- Icon chuyển đổi (hoán đổi) -->
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextGiaTriNguon"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal|numberSigned"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        android:background="@android:color/transparent"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:hint="0"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewLabelSource"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/spinnerDonViNguon"
+                        app:layout_constraintHorizontal_weight="2"/>
+
+                    <Spinner
+                        android:id="@+id/spinnerDonViNguon"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="8dp"
+                        style="@style/Widget.AppCompat.Spinner.Underlined"
+                        app:layout_constraintTop_toTopOf="@+id/editTextGiaTriNguon"
+                        app:layout_constraintBottom_toBottomOf="@+id/editTextGiaTriNguon"
+                        app:layout_constraintStart_toEndOf="@+id/editTextGiaTriNguon"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_weight="1.2"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Nút hoán đổi -->
             <ImageButton
                 android:id="@+id/buttonHoanDoi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:src="@drawable/swap"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="Hoán đổi đơn vị"
                 android:layout_marginTop="16dp"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNguon"
+                android:layout_marginBottom="16dp"
+                app:tint="?attr/colorPrimary"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewSource"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
-
-            <!-- Ô hiển thị kết quả -->
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutDich"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <!-- CardView cho đơn vị đích (kết quả) -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardViewResult"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="Kết quả"
-                android:layout_marginTop="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp"
                 app:layout_constraintTop_toBottomOf="@+id/buttonHoanDoi"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/spinnerDonViDich"
-                app:layout_constraintWidth_percent="0.6">
+                app:layout_constraintEnd_toEndOf="parent">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/textViewKetQua"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none"
-                    android:focusable="false"
-                    android:clickable="false"
-                    android:longClickable="false"
-                    android:textIsSelectable="true"/>
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:background="#DAA796"
+                    android:padding="16dp">
 
-            <!-- Spinner chọn đơn vị đích -->
-            <Spinner
-                android:id="@+id/spinnerDonViDich"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="8dp"
-                app:layout_constraintTop_toTopOf="@+id/textInputLayoutDich"
-                app:layout_constraintBottom_toBottomOf="@+id/textInputLayoutDich"
-                app:layout_constraintStart_toEndOf="@+id/textInputLayoutDich"
-                app:layout_constraintEnd_toEndOf="parent"
-                />
+                    <TextView
+                        android:id="@+id/textViewLabelResult"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sang"
+                        android:textAppearance="?attr/textAppearanceCaption"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"/>
 
-            <!-- Nút Lưu  -->
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/textViewKetQua"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:inputType="none"
+                        android:focusable="false"
+                        android:clickable="false"
+                        android:longClickable="false"
+                        android:textIsSelectable="true"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        android:textColor="?attr/colorPrimary"
+                        android:background="@android:color/transparent"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        tools:text="0"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewLabelResult"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/spinnerDonViDich"
+                        app:layout_constraintHorizontal_weight="2"/>
+
+                    <Spinner
+                        android:id="@+id/spinnerDonViDich"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="8dp"
+                        style="@style/Widget.AppCompat.Spinner.Underlined"
+                        app:layout_constraintTop_toTopOf="@+id/textViewKetQua"
+                        app:layout_constraintBottom_toBottomOf="@+id/textViewKetQua"
+                        app:layout_constraintStart_toEndOf="@+id/textViewKetQua"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_weight="1.2"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonLuu"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Lưu lịch sử"
                 app:icon="@drawable/save"
                 android:layout_marginTop="32dp"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDich"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewResult"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="16dp"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
-
-</LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
