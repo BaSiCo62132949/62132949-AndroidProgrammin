@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="true">
+        <color android:alpha="0.54" android:color="@color/app_secondary"/> <!-- MÀU CAM NHẠT VỚI ALPHA KHI BẬT -->
+    </item>
+
+    <item>
+        <color android:alpha="0.38" android:color="#000000"/>
+    </item>
+</selector>

@@ -127,9 +127,6 @@ public class CurrencyConverterFragment extends Fragment implements CurrencyRowAd
             updateConversions();
         });
 
-        // Các nút toán tử (+, -, *, /) và % cần logic phức tạp hơn nếu bạn muốn làm máy tính
-        // Hiện tại, chúng ta chỉ tập trung vào việc nhập số và chuyển đổi
-        // Bạn có thể ẩn hoặc vô hiệu hóa chúng nếu không triển khai
         rootView.findViewById(R.id.buttonKeyPercent).setEnabled(false);
         rootView.findViewById(R.id.buttonKeyDivide).setEnabled(false);
         rootView.findViewById(R.id.buttonKeyMultiply).setEnabled(false);

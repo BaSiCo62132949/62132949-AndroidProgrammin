@@ -14,9 +14,9 @@
 
     <!-- Mục trống ở giữa cho FAB -->
     <item
-        android:id="@+id/placeholder"
-        android:title=""
-        android:enabled="false"/>
+        android:id="@+id/navigation_may_tinh"
+        android:icon="@drawable/calculate"
+        android:title="calculate" />
 
     <item
         android:id="@+id/navigation_tien_te"

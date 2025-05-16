@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background"
+    tools:context=".CalculatorFragment">
+
+    <LinearLayout
+        android:id="@+id/khungHienThi"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/tieuDeMayTinh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Máy tính"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="@color/app_primary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <ImageButton
+                android:id="@+id/nutLuuLichSuTinhToan"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/save"
+                android:scaleType="fitCenter"
+                android:padding="6dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Lưu lịch sử tính toán"
+                app:tint="?attr/colorControlNormal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/textPhepTinh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:maxLines="2"
+            android:ellipsize="start"
+            android:textColor="@color/app_text_secondary"
+            android:textSize="24sp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="4dp"
+            tools:text="56.200+10%" />
+
+        <TextView
+            android:id="@+id/textKetQua"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:textColor="@color/app_text_primary"
+            android:textSize="48sp"
+            android:textStyle="bold"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="16dp"
+            tools:text="61.820"
+            android:layout_marginTop="8dp"/>
+    </LinearLayout>
+
+    <GridLayout
+        android:id="@+id/luoiNutBam"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="?attr/colorSurface"
+        android:columnCount="4"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:rowCount="5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/khungHienThi">
+
+        <!-- Hàng 1 -->
+        <Button android:id="@+id/nutXoaHet" style="@style/NutMayTinh.ChucNang" android:text="C" />
+        <Button android:id="@+id/nutNgoac" style="@style/NutMayTinh.ChucNang" android:text="( )" />
+        <Button android:id="@+id/nutPhanTram" style="@style/NutMayTinh.ChucNang" android:text="%" />
+        <Button android:id="@+id/nutChia" style="@style/NutMayTinh.PhepToan" android:text="÷" />
+
+        <Button android:id="@+id/nut7" style="@style/NutMayTinh.So" android:text="7" />
+        <Button android:id="@+id/nut8" style="@style/NutMayTinh.So" android:text="8" />
+        <Button android:id="@+id/nut9" style="@style/NutMayTinh.So" android:text="9" />
+        <Button android:id="@+id/nutNhan" style="@style/NutMayTinh.PhepToan" android:text="×" />
+
+        <Button android:id="@+id/nut4" style="@style/NutMayTinh.So" android:text="4" />
+        <Button android:id="@+id/nut5" style="@style/NutMayTinh.So" android:text="5" />
+        <Button android:id="@+id/nut6" style="@style/NutMayTinh.So" android:text="6" />
+        <Button android:id="@+id/nutTru" style="@style/NutMayTinh.PhepToan" android:text="−" />
+
+        <Button android:id="@+id/nut1" style="@style/NutMayTinh.So" android:text="1" />
+        <Button android:id="@+id/nut2" style="@style/NutMayTinh.So" android:text="2" />
+        <Button android:id="@+id/nut3" style="@style/NutMayTinh.So" android:text="3" />
+        <Button android:id="@+id/nutCong" style="@style/NutMayTinh.PhepToan" android:text="+" />
+
+        <Button android:id="@+id/nut0" style="@style/NutMayTinh.So" android:layout_columnSpan="2" android:layout_gravity="fill_horizontal" android:text="0" />
+        <Button android:id="@+id/nutThapPhan" style="@style/NutMayTinh.So" android:text="." />
+        <Button android:id="@+id/nutBang" style="@style/NutMayTinh.PhepToan.Bang" android:text="=" />
+    </GridLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

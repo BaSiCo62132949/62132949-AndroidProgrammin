@@ -1,5 +1,6 @@
 package ntu.basico.baithick_62132949;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -46,6 +47,7 @@ public class UnitConverterFragment extends Fragment {
     private List<View> unitTypeButtonViews = new ArrayList<>();
     private String[] unitTypesArray;
     private String currentUnitTypeString;
+    private int selectedTypeButtonIndex = -1;
 
     private HistoryDbHelper dbHelper;
 
@@ -301,14 +303,14 @@ public class UnitConverterFragment extends Fragment {
             TextView text = btnView.findViewById(R.id.textViewUnitTypeName);
             if (i == index) {
                 // Nút được chọn: thay đổi background hoặc màu icon/text
-                btnView.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.unit_type_text_default_color)); // Tạo màu này
-                icon.setColorFilter(ContextCompat.getColor(requireContext(), R.color.unit_type_icon_default_tint)); // Tạo màu này
-                text.setTextColor(ContextCompat.getColor(requireContext(), R.color.unit_type_text_selected_color)); // Tạo màu này
+                btnView.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.app_secondary)); // Tạo màu này
+                icon.setColorFilter(ContextCompat.getColor(requireContext(), R.color.app_text_primary)); // Tạo màu này
+                text.setTextColor(ContextCompat.getColor(requireContext(), R.color.app_text_primary)); // Tạo màu này
             } else {
                 // Nút không được chọn: trở về trạng thái bình thường
-                btnView.setBackgroundResource(R.drawable.button_unit_type_default_bg); // Tạo drawable này
-                icon.setColorFilter(ContextCompat.getColor(requireContext(), R.color.unit_type_icon_default_tint)); // Tạo màu này
-                text.setTextColor(ContextCompat.getColor(requireContext(), R.color.unit_type_text_default_color)); // Tạo màu này
+                btnView.setBackgroundColor(Color.TRANSPARENT); // Tạo drawable này
+                icon.setColorFilter(ContextCompat.getColor(requireContext(), R.color.white)); // Tạo màu này
+                text.setTextColor(ContextCompat.getColor(requireContext(), R.color.white)); // Tạo màu này
             }
         }
 

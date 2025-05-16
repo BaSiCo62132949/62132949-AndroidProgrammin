@@ -35,19 +35,18 @@ public class CurrencyRowAdapter extends RecyclerView.Adapter<CurrencyRowAdapter.
     }
 
     public void setBaseCurrencyPosition(int position) {
-        if (baseCurrencyPosition != position) {
-            // Bỏ trạng thái base cũ
-            if (baseCurrencyPosition >= 0 && baseCurrencyPosition < currencyItems.size()) {
-                currencyItems.get(baseCurrencyPosition).setBaseCurrency(false);
-                notifyItemChanged(baseCurrencyPosition);
-            }
-            // Đặt trạng thái base mới
+        if (this.baseCurrencyPosition != position && position >= 0 && position < currencyItems.size()) {
+            int oldBasePosition = this.baseCurrencyPosition;
             this.baseCurrencyPosition = position;
-            if (baseCurrencyPosition >= 0 && baseCurrencyPosition < currencyItems.size()) {
-                currencyItems.get(baseCurrencyPosition).setBaseCurrency(true);
-                notifyItemChanged(baseCurrencyPosition);
-                listener.onCurrencyRowClicked(position); // Thông báo cho fragment
-            }
+
+            // Cập nhật trạng thái isBaseCurrency cho item (nếu bạn dùng)
+            // currencyItems.get(oldBasePosition).setBaseCurrency(false);
+            // currencyItems.get(this.baseCurrencyPosition).setBaseCurrency(true);
+
+            notifyItemChanged(oldBasePosition); // Cập nhật lại item base cũ
+            notifyItemChanged(this.baseCurrencyPosition); // Cập nhật lại item base mới
+
+            listener.onCurrencyRowClicked(position);
         }
     }
 
@@ -68,6 +67,20 @@ public class CurrencyRowAdapter extends RecyclerView.Adapter<CurrencyRowAdapter.
         CurrencyDisplayItem item = currencyItems.get(position);
         holder.textViewCurrencyCode.setText(item.getCode());
         holder.editTextCurrencyValue.setText(item.getDisplayValue());
+
+        holder.itemView.setActivated(position == baseCurrencyPosition);
+        if (position == baseCurrencyPosition) {
+            // Đây là đồng tiền cơ sở
+            holder.editTextCurrencyValue.setTypeface(null, Typeface.BOLD);
+
+        } else {
+            holder.editTextCurrencyValue.setTypeface(null, Typeface.NORMAL);
+        }
+
+        holder.itemView.setOnClickListener(v -> {
+
+            setBaseCurrencyPosition(holder.getAdapterPosition());
+        });
 
         // hieen thi co
         String flagName = item.getFlagResourceName();
@@ -169,4 +182,6 @@ public class CurrencyRowAdapter extends RecyclerView.Adapter<CurrencyRowAdapter.
             editTextCurrencyValue = itemView.findViewById(R.id.editTextCurrencyValue);
         }
     }
+
+
 }

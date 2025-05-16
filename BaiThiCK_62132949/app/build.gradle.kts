@@ -41,4 +41,5 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     implementation("com.android.volley:volley:1.2.1")
+    implementation ("org.mariuszgromada.math:MathParser.org-mXparser:5.0.7")
 }

@@ -1,6 +1,5 @@
 <resources>
-    <!-- Trong res/values/strings.xml -->
-    <string name="app_name">Unit and Currency Converter</string>
+    <string name="app_name">app chuyển đổi</string>
     <string-array name="unit_types">
         <item>Độ dài</item>
         <item>Khối lượng</item>
@@ -55,6 +54,8 @@
     <string name="toast_no_valid_data_to_save">Không có dữ liệu hợp lệ để lưu</string>
     <string name="text_result_invalid">Không hợp lệ</string>
     <string name="text_result_error">Lỗi</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

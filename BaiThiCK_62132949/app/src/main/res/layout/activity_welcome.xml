@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/app_background"
     android:padding="32dp"
     tools:context=".WelcomeActivity">
 
@@ -12,8 +13,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Chào mừng bạn!"
-        android:textSize="28sp"
+        android:textSize="32sp"
         android:textStyle="bold"
+        android:textColor="@color/app_primary"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,14 +23,17 @@
         app:layout_constraintVertical_bias="0.3"
         app:layout_constraintVertical_chainStyle="packed"/>
 
+
     <TextView
         android:id="@+id/textViewMoTaNgan"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Ứng dụng giúp bạn chuyển đổi đơn vị và tiền tệ một cách nhanh chóng và dễ dàng."
         android:textSize="16sp"
+        android:lineSpacingExtra="4dp"
         android:textAlignment="center"
-        android:layout_marginTop="16dp"
+        android:textColor="@color/app_text_secondary"
+        android:layout_marginTop="24dp"
         app:layout_constraintTop_toBottomOf="@+id/textViewTieuDeChaoMung"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,13 +42,17 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonBatDauNgay"
-        style="@style/Widget.MaterialComponents.Button"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Bắt đầu ngay"
         android:layout_marginTop="48dp"
         app:icon="@drawable/start"
         app:iconGravity="textStart"
+        android:textColor="@color/white"
+        app:cornerRadius="24dp"
+        app:iconTint="@color/white"
+        android:backgroundTint="@color/app_button_background"
         app:layout_constraintTop_toBottomOf="@+id/textViewMoTaNgan"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,6 +63,8 @@
         style="@style/Widget.MaterialComponents.Button.TextButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textColor="@color/app_primary"
+        app:rippleColor="@color/app_primary_dark_alpha"
         android:text="Xem hướng dẫn"
         android:layout_marginTop="16dp"
         app:icon="@drawable/help"

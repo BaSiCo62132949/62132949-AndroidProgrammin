@@ -1,11 +1,163 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.BaiThiCK_62132949" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+    <style name="Theme.App.Splash" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@color/app_primary</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/app_primary_dark</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.BaiThiCK_62132949" parent="Base.Theme.BaiThiCK_62132949" />
+    <style name="Theme.App.Welcome" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowBackground">@color/app_background</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/app_primary_dark</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.BaiThiCK_62132949" parent="Base.Theme.BaiThiCK_62132949">
+
+
+        <item name="colorPrimary">@color/app_primary</item>
+        <item name="colorPrimaryVariant">@color/app_primary_dark</item> <!-- Thường dùng cho status bar -->
+        <item name="colorOnPrimary">@color/white</item> <!-- Màu chữ/icon trên nền primary -->
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/app_secondary</item>
+        <item name="colorSecondaryVariant">@color/app_secondary</item> <!-- Có thể dùng màu đậm hơn của secondary nếu có -->
+        <item name="colorOnSecondary">@color/black</item> <!-- Màu chữ/icon trên nền secondary -->
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+
+        <!-- Màu nền chung của ứng dụng -->
+        <item name="android:colorBackground">@color/app_background</item>
+        <item name="colorSurface">@color/app_background</item> <!-- Nền cho CardView, BottomSheet, v.v. -->
+        <item name="colorOnSurface">@color/app_text_primary</item> <!-- Chữ trên nền Surface -->
+        <item name="colorError">@android:color/holo_red_dark</item> <!-- Giữ màu lỗi mặc định hoặc tùy chỉnh -->
+        <item name="colorOnError">@color/white</item>
+
+        <!-- Màu văn bản mặc định -->
+        <item name="android:textColorPrimary">@color/app_text_primary</item>
+        <item name="android:textColorSecondary">@color/app_text_secondary</item>
+
+
+    </style>
+    <style name="AppButton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/app_button_background</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+
+    <!-- Style cho các TextInputEditText (ví dụ) -->
+    <style name="AppTextInputEditText" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:textColorHint">@color/app_text_secondary</item>
+        <item name="boxStrokeColor">@color/app_primary</item>
+        <item name="hintTextColor">@color/app_primary</item>
+    </style>
+
+    <style name="KeyboardRowNeo">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:layout_marginBottom">6dp</item> <!-- Khoảng cách giữa các hàng -->
+    </style>
+
+    <style name="KeyboardButtonNeo" parent="Widget.MaterialComponents.Button.TextButton"> <!-- Dùng TextButton để dễ tùy chỉnh nền -->
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">60dp</item> <!-- Chiều cao cố định cho nút -->
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginStart">4dp</item>
+        <item name="android:layout_marginEnd">4dp</item>
+        <item name="android:textSize">22sp</item> <!-- Kích thước chữ -->
+        <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">30dp</item> <!-- Bo tròn nhiều -->
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <!-- Nút chức năng (C, <, %) -->
+    <style name="KeyboardButtonNeo.Function" parent="KeyboardButtonNeo">
+        <item name="backgroundTint">#A0A0A0</item> <!-- Màu xám nhạt (gần giống mẫu) -->
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <!-- Nút số (0-9, .) -->
+    <style name="KeyboardButtonNeo.Number" parent="KeyboardButtonNeo">
+        <item name="backgroundTint">#333333</item> <!-- Màu xám đậm cho số -->
+    </style>
+
+    <!-- Nút số 0 rộng gấp đôi -->
+    <style name="KeyboardButtonNeo.Number.DoubleWidth" parent="KeyboardButtonNeo.Number">
+        <item name="android:layout_weight">2.05</item>
+        <item name="android:layout_marginEnd">2dp</item>
+    </style>
+
+    <!-- Nút phép toán (+, -, *, /) và = -->
+    <style name="KeyboardButtonNeo.Operator" parent="KeyboardButtonNeo">
+        <item name="backgroundTint">#FF9500</item> <!-- MÀU CAM GIỐNG MẪU -->
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="Base.Theme.BaiThiCK_62132949" parent="Theme.Material3.DayNight.NoActionBar">
+
+    </style>
+    <style name="AppSpinner" parent="Widget.AppCompat.Spinner.Underlined">
+        <item name="android:backgroundTint" tools:targetApi="lollipop">@color/app_primary</item>
+    </style>
+
+    <!-- Style cơ bản cho tất cả các nút máy tính -->
+    <style name="NutMayTinh" parent="Widget.MaterialComponents.Button.TextButton"> <!-- Dùng TextButton để dễ tùy chỉnh nền -->
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_columnWeight">1</item>
+        <item name="android:layout_rowWeight">1</item>
+        <item name="android:layout_gravity">fill</item>
+        <item name="android:insetTop">4dp</item>
+        <item name="android:insetBottom">4dp</item>
+        <item name="android:insetLeft">4dp</item>
+        <item name="android:insetRight">4dp</item>
+        <item name="android:textSize">22sp</item> <!-- Kích thước chữ -->
+        <item name="cornerRadius">16dp</item> <!-- Bo góc -->
+        <item name="android:stateListAnimator">@null</item> <!-- Bỏ hiệu ứng nhấp nháy -->
+    </style>
+
+    <!-- Nút số (0-9, .) -->
+    <style name="NutMayTinh.So" parent="NutMayTinh">
+        <item name="backgroundTint">#F5F5F5</item> <!-- Màu xám rất nhạt (gần trắng) -->
+        <item name="android:textColor">@color/app_text_primary</item> <!-- Chữ màu xám đậm -->
+        <item name="strokeColor">@color/app_icon_and_border</item> <!-- Viền xám xanh nhạt (tùy chọn) -->
+        <item name="strokeWidth">1dp</item> <!-- Độ dày viền (tùy chọn) -->
+    </style>
+
+    <!-- Nút chức năng (C, (), %) -->
+    <style name="NutMayTinh.ChucNang" parent="NutMayTinh">
+        <item name="backgroundTint">#E0E0E0</item> <!-- Màu xám nhạt hơn một chút -->
+        <item name="android:textColor">@color/app_text_primary</item>
+    </style>
+
+    <!-- Nút phép toán (+, -, ×, ÷) -->
+    <style name="NutMayTinh.PhepToan" parent="NutMayTinh">
+        <item name="backgroundTint">@color/app_primary</item> <!-- NỀN MÀU XANH BIỂN SÁNG -->
+        <item name="android:textColor">@color/white</item> <!-- CHỮ MÀU TRẮNG -->
+    </style>
+
+    <!-- Nút bằng (=) -->
+    <style name="NutMayTinh.PhepToan.Bang" parent="NutMayTinh">
+        <item name="backgroundTint">@color/app_button_background</item> <!-- NỀN MÀU XANH ĐẬM HƠN -->
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="AppSearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <!-- Màu chữ khi nhập query -->
+        <item name="android:textColorPrimary">@color/app_text_primary</item>
+        <!-- Màu chữ gợi ý (query hint) -->
+        <item name="android:textColorHint">@color/app_text_secondary</item>
+        <!-- Màu của icon tìm kiếm, icon close -->
+        <item name="android:tint">@color/app_text_secondary</item>
+        >
+    </style>
 
     <style name="KeyboardRow">
         <item name="android:layout_width">match_parent</item>
@@ -45,4 +197,7 @@
     <style name="KeyboardButton.DarkGray.DoubleWidth" parent="KeyboardButton.DarkGray">
         <item name="android:layout_weight">2.1</item> <!-- Cho nút 0 rộng hơn -->
     </style>
+
+
+
 </resources>

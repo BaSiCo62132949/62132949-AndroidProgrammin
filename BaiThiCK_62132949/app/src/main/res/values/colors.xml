@@ -11,4 +11,16 @@
     <color name="unit_type_text_selected_color">#FFFFFF</color>
     <color name="unit_type_icon_default_tint">#B0BEC5</color>
     <color name="unit_type_text_default_color">#B0BEC5</color>
+    <color name="app_primary">#03A9F4</color>          <!-- Xanh biển sáng -->
+    <color name="app_primary_dark">#0288D1</color>     <!-- Xanh dương đậm hơn (cho status bar hoặc nút) -->
+    <color name="app_secondary">#FFD54F</color>        <!-- Cam nhạt (bạn có thể chọn #FFB74D nếu muốn) -->
+    <color name="app_background">#FFFFFF</color>       <!-- Trắng tinh khiết -->
+    <color name="app_text_primary">#333333</color>     <!-- Xám đậm vừa phải -->
+    <color name="app_text_secondary">#757575</color>    <!-- Xám nhạt -->
+    <color name="app_button_background">#0288D1</color><!-- Xanh dương đậm hơn cho nút -->
+    <color name="app_icon_and_border">#B3E5FC</color>
+    <!-- Màu xanh dương đậm với độ trong suốt (alpha) cho hiệu ứng ripple -->
+    <color name="app_primary_dark_alpha">#330288D1</color> <!-- 33 là khoảng 20% alpha -->
+
+
 </resources>

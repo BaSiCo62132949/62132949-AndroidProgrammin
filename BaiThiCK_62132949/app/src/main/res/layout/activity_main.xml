@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
     tools:context=".MainActivity">
 
     <!-- Container để hiển thị các Fragment -->
@@ -19,20 +20,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="?android:attr/windowBackground"
+        android:background="?attr/colorSurface"
+        app:itemIconTint="@drawable/bottom_nav_item_color_selector"
+        app:itemTextColor="@drawable/bottom_nav_item_color_selector"
+        app:elevation="8dp"
+        app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav_menu" />
 
     <!-- Floating Action Button -->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabThemMoi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginBottom="32dp"
-        app:srcCompat="@drawable/add"
-        android:contentDescription="Thêm mới"
-        app:backgroundTint="?attr/colorSecondary"
-        app:tint="@android:color/white"
-        />
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

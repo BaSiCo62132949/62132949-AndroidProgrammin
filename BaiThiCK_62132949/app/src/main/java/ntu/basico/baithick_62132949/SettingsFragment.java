@@ -33,7 +33,6 @@ public class SettingsFragment extends Fragment {
     private static final String PREFS_NAME = "AppSettingsPrefs";
     private static final String PREF_DARK_MODE = "darkModeEnabled";
 
-    private MaterialSwitch switchDarkMode;
     private MaterialButton buttonGioiThieu;
     private SharedPreferences sharedPreferences;
 
@@ -42,35 +41,18 @@ public class SettingsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_settings, container, false);
-
-        switchDarkMode = view.findViewById(R.id.switchDarkMode);
+        
         buttonGioiThieu = view.findViewById(R.id.buttonGioiThieu);
 
 
 
         sharedPreferences = requireActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
 
-        setupDarkModeSwitch();
         setupAboutButton();
 
         return view;
     }
 
-    private void setupDarkModeSwitch() {
-        boolean isDarkModeEnabled = sharedPreferences.getBoolean(PREF_DARK_MODE, false);
-        switchDarkMode.setChecked(isDarkModeEnabled);
-        Log.d(TAG, "setupDarkModeSwitch: Initial dark mode state: " + isDarkModeEnabled);
-
-
-        switchDarkMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Log.d(TAG, "onCheckedChanged: Dark mode switch changed to: " + isChecked);
-                applyTheme(isChecked);
-                saveThemePreference(isChecked);
-            }
-        });
-    }
 
     private void applyTheme(boolean isDarkMode) {
         if (isDarkMode) {

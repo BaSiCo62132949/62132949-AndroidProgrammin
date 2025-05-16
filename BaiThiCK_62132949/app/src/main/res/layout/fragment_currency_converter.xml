@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorPrimary"
+    android:background="#000000"
     tools:context=".CurrencyConverterFragment">
 
     <!-- Thanh tiêu đề (Toolbar hoặc TextView đơn giản) -->
@@ -12,50 +12,54 @@
         android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Converter Neo"
         android:textColor="@android:color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewLastUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="17:24 22/03/2024"
-        android:textColor="@android:color/darker_gray"
         android:textSize="12sp"
+        android:textColor="#B3FFFFFF"
+        app:layout_constraintStart_toStartOf="@+id/textViewTitle"
         app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
-        app:layout_constraintStart_toStartOf="@+id/textViewTitle" />
+        tools:text="17:24 22/03/2024" />
 
     <ImageButton
         android:id="@+id/buttonRefreshRatesTop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:scaleType="fitCenter"
+        android:padding="6dp"
         android:src="@drawable/bank"
-        app:tint="@android:color/white"
-        app:layout_constraintTop_toTopOf="@+id/textViewTitle"
         app:layout_constraintBottom_toBottomOf="@+id/textViewLastUpdate"
         app:layout_constraintEnd_toStartOf="@+id/buttonSaveHistoryTop"
-        android:layout_marginEnd="8dp"
-        android:background="?attr/selectableItemBackgroundBorderless"/>
+        app:layout_constraintTop_toTopOf="@+id/textViewTitle"
+        app:tint="@color/white" />
     <!-- Bạn có thể thêm các icon khác ở đây -->
 
     <ImageButton
         android:id="@+id/buttonSaveHistoryTop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/save"
-        app:tint="@android:color/white"
-        app:layout_constraintTop_toTopOf="@+id/textViewTitle"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewLastUpdate"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
         android:layout_marginEnd="16dp"
         android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="Lưu lịch sử" />
+        android:scaleType="fitCenter"
+        android:padding="6dp"
+        android:contentDescription="Lưu lịch sử"
+        app:tint="@color/white"
+        android:src="@drawable/save"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewLastUpdate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textViewTitle" />
 
 
     <!-- RecyclerView để hiển thị danh sách tiền tệ -->
@@ -66,10 +70,10 @@
         android:layout_marginTop="16dp"
         app:layout_constraintTop_toBottomOf="@+id/textViewLastUpdate"
         app:layout_constraintBottom_toTopOf="@+id/customKeyboardLayout"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"/>
 
     <!-- Layout cho bàn phím tùy chỉnh (sẽ định nghĩa sau) -->
     <LinearLayout
@@ -77,123 +81,45 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:background="#56407D"
+        android:background="#1A1A1A"
         android:orientation="vertical"
         android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
-        <!-- Các hàng nút sẽ được thêm vào đây -->
-        <!-- Hàng 1: C, <-, %, / -->
-        <LinearLayout style="@style/KeyboardRow">
 
-            <Button
-                android:id="@+id/buttonKeyClear"
-                style="@style/KeyboardButton.Gray"
-                android:text="C" />
-
-            <Button
-                android:id="@+id/buttonKeyBackspace"
-                style="@style/KeyboardButton.Gray"
-                android:text="←" />
-
-            <Button
-                android:id="@+id/buttonKeyPercent"
-                style="@style/KeyboardButton.Gray"
-                android:text="%" />
-
-            <Button
-                android:id="@+id/buttonKeyDivide"
-                style="@style/KeyboardButton.Orange"
-                android:text="÷" />
+        <LinearLayout style="@style/KeyboardRowNeo"> <!-- Style mới cho hàng -->
+            <Button style="@style/KeyboardButtonNeo.Function" android:id="@+id/buttonKeyClear" android:text="C"/>
+            <Button style="@style/KeyboardButtonNeo.Function" android:id="@+id/buttonKeyBackspace" android:text="←"/>
+            <Button style="@style/KeyboardButtonNeo.Function" android:id="@+id/buttonKeyPercent" android:text="%"/>
+            <Button style="@style/KeyboardButtonNeo.Operator" android:id="@+id/buttonKeyDivide" android:text="÷"/>
+        </LinearLayout>
+        <!-- Tương tự cho các hàng khác, sử dụng các style KeyboardButtonNeo... -->
+        <LinearLayout style="@style/KeyboardRowNeo">
+            <Button style="@style/KeyboardButtonNeo.Number" android:id="@+id/buttonKey7" android:text="7"/>
+            <Button style="@style/KeyboardButtonNeo.Number" android:id="@+id/buttonKey8" android:text="8"/>
+            <Button style="@style/KeyboardButtonNeo.Number" android:id="@+id/buttonKey9" android:text="9"/>
+            <Button style="@style/KeyboardButtonNeo.Operator" android:id="@+id/buttonKeyMultiply" android:text="×"/>
+        </LinearLayout>
+        <LinearLayout style="@style/KeyboardRowNeo">
+            <Button style="@style/KeyboardButtonNeo.Number" android:id="@+id/buttonKey4" android:text="4"/>
+            <Button style="@style/KeyboardButtonNeo.Number" android:id="@+id/buttonKey5" android:text="5"/>
+            <Button style="@style/KeyboardButtonNeo.Number" android:id="@+id/buttonKey6" android:text="6"/>
+            <Button style="@style/KeyboardButtonNeo.Operator" android:id="@+id/buttonKeySubtract" android:text="−"/>
+        </LinearLayout>
+        <LinearLayout style="@style/KeyboardRowNeo">
+            <Button style="@style/KeyboardButtonNeo.Number" android:id="@+id/buttonKey1" android:text="1"/>
+            <Button style="@style/KeyboardButtonNeo.Number" android:id="@+id/buttonKey2" android:text="2"/>
+            <Button style="@style/KeyboardButtonNeo.Number" android:id="@+id/buttonKey3" android:text="3"/>
+            <Button style="@style/KeyboardButtonNeo.Operator" android:id="@+id/buttonKeyAdd" android:text="+"/>
+        </LinearLayout>
+        <LinearLayout style="@style/KeyboardRowNeo">
+            <Button style="@style/KeyboardButtonNeo.Number.DoubleWidth" android:id="@+id/buttonKey0" android:text="0"/>
+            <Button style="@style/KeyboardButtonNeo.Number" android:id="@+id/buttonKeyDecimal" android:text=","/>
+            <Button style="@style/KeyboardButtonNeo.Operator" android:id="@+id/buttonKeyEquals" android:text="="/>
         </LinearLayout>
         <!-- Hàng 2: 7, 8, 9, X -->
-        <LinearLayout style="@style/KeyboardRow">
 
-            <Button
-                android:id="@+id/buttonKey7"
-                style="@style/KeyboardButton.DarkGray"
-                android:text="7" />
-
-            <Button
-                android:id="@+id/buttonKey8"
-                style="@style/KeyboardButton.DarkGray"
-                android:text="8" />
-
-            <Button
-                android:id="@+id/buttonKey9"
-                style="@style/KeyboardButton.DarkGray"
-                android:text="9" />
-
-            <Button
-                android:id="@+id/buttonKeyMultiply"
-                style="@style/KeyboardButton.Orange"
-                android:text="×" />
-        </LinearLayout>
-        <!-- Hàng 3: 4, 5, 6, - -->
-        <LinearLayout style="@style/KeyboardRow">
-
-            <Button
-                android:id="@+id/buttonKey4"
-                style="@style/KeyboardButton.DarkGray"
-                android:text="4" />
-
-            <Button
-                android:id="@+id/buttonKey5"
-                style="@style/KeyboardButton.DarkGray"
-                android:text="5" />
-
-            <Button
-                android:id="@+id/buttonKey6"
-                style="@style/KeyboardButton.DarkGray"
-                android:text="6" />
-
-            <Button
-                android:id="@+id/buttonKeySubtract"
-                style="@style/KeyboardButton.Orange"
-                android:text="−" />
-        </LinearLayout>
-        <!-- Hàng 4: 1, 2, 3, + -->
-        <LinearLayout style="@style/KeyboardRow">
-
-            <Button
-                android:id="@+id/buttonKey1"
-                style="@style/KeyboardButton.DarkGray"
-                android:text="1" />
-
-            <Button
-                android:id="@+id/buttonKey2"
-                style="@style/KeyboardButton.DarkGray"
-                android:text="2" />
-
-            <Button
-                android:id="@+id/buttonKey3"
-                style="@style/KeyboardButton.DarkGray"
-                android:text="3" />
-
-            <Button
-                android:id="@+id/buttonKeyAdd"
-                style="@style/KeyboardButton.Orange"
-                android:text="+" />
-        </LinearLayout>
-        <!-- Hàng 5: 0, ,, = -->
-        <LinearLayout style="@style/KeyboardRow">
-
-            <Button
-                android:id="@+id/buttonKey0"
-                style="@style/KeyboardButton.DarkGray.DoubleWidth"
-                android:text="0" />
-
-            <Button
-                android:id="@+id/buttonKeyDecimal"
-                style="@style/KeyboardButton.DarkGray"
-                android:text="," />
-
-            <Button
-                android:id="@+id/buttonKeyEquals"
-                style="@style/KeyboardButton.Orange"
-                android:text="=" />
-        </LinearLayout>
     </LinearLayout>
 
     <ProgressBar
@@ -202,23 +128,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:layout_constraintTop_toTopOf="@+id/recyclerViewCurrencies"
+        android:indeterminateTint="@color/app_secondary"
         app:layout_constraintBottom_toBottomOf="@+id/recyclerViewCurrencies"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/recyclerViewCurrencies" />
 
     <TextView
         android:id="@+id/textViewErrorMessage"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/holo_red_light"
-        android:textAlignment="center"
-        android:visibility="gone"
-        app:layout_constraintTop_toTopOf="@+id/recyclerViewCurrencies"
-        app:layout_constraintBottom_toBottomOf="@+id/recyclerViewCurrencies"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:padding="16dp"
-        tools:text="Lỗi tải dữ liệu"/>
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_red_light"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/recyclerViewCurrencies"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/recyclerViewCurrencies"
+        tools:text="Lỗi tải dữ liệu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

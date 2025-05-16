@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
+    android:background="@color/app_background"
     tools:context=".SettingsFragment">
 
     <!-- Phần Giao diện -->
@@ -14,20 +15,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Giao diện"
-        android:layout_marginBottom="8dp"/>
+        android:textColor="@color/app_primary"
+        android:layout_marginBottom="12dp"/>
 
-    <com.google.android.material.materialswitch.MaterialSwitch
-        android:id="@+id/switchDarkMode"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="48dp"
-        android:text="Chế độ tối (Dark Mode)"
-        android:textAppearance="?attr/textAppearanceBody1"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="?android:attr/listDivider"
+
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"/>
 
@@ -43,13 +39,19 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonGioiThieu"
         style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:minHeight="56dp"
+        android:textSize="16sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Giới thiệu ứng dụng"
         android:gravity="start|center_vertical"
         app:icon="@drawable/info"
         app:iconPadding="16dp"
-        app:iconTint="?attr/colorControlNormal"/>
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:textColor="@color/app_text_primary"
+        app:iconTint="?attr/colorControlNormal"
+        app:rippleColor="@color/app_primary_dark_alpha"/>
 
 
 </LinearLayout>

@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -25,20 +26,17 @@ import ntu.basico.baithick_62132949.UnitConverterFragment;
 public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigation;
-    FloatingActionButton fabThemMoi;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        SettingsFragment.applySavedTheme(this);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         bottomNavigation = findViewById(R.id.bottomNavigation);
-        fabThemMoi = findViewById(R.id.fabThemMoi);
 
-
-        bottomNavigation.getMenu().findItem(R.id.placeholder).setEnabled(false);
 
 
         if (savedInstanceState == null) {
@@ -57,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
                     selectedFragment = new ntu.basico.baithick_62132949.HistoryFragment();
                 } else if (itemId == R.id.navigation_don_vi) {
                     selectedFragment = new ntu.basico.baithick_62132949.UnitConverterFragment();
+                } else if (itemId == R.id.navigation_may_tinh) {
+                    selectedFragment = new ntu.basico.baithick_62132949.CalculatorFragment(); Log.d("MainActivity", "Calculator tab selected!");  // Sử dụng tên lớp mới
                 } else if (itemId == R.id.navigation_tien_te) {
                     selectedFragment = new ntu.basico.baithick_62132949.CurrencyConverterFragment();
                 } else if (itemId == R.id.navigation_cai_dat) {
@@ -72,35 +72,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         // Xử lý sự kiện click FAB
-        fabThemMoi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragmentContainer);
-                ntu.basico.baithick_62132949.UnitConverterFragment unitConverterFragment;
-
-                if (fragment instanceof ntu.basico.baithick_62132949.UnitConverterFragment) {
-                    unitConverterFragment = (ntu.basico.baithick_62132949.UnitConverterFragment) fragment;
-                    loadFragment(unitConverterFragment);
-                    bottomNavigation.setSelectedItemId(R.id.navigation_don_vi);
-                    v.post(() -> {
-                        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragmentContainer);
-                        if (currentFragment instanceof ntu.basico.baithick_62132949.UnitConverterFragment) {
-                            ((ntu.basico.baithick_62132949.UnitConverterFragment) currentFragment).ChonLoaiDonViMacDinh(0); // Chọn tab đầu tiên (ví dụ)
-                        }
-                    });
-                } else {
-                    unitConverterFragment = new ntu.basico.baithick_62132949.UnitConverterFragment();
-                    unitConverterFragment.ChonLoaiDonViMacDinh(0); // Chọn tab đầu tiên (ví dụ)
-                    bottomNavigation.setSelectedItemId(R.id.navigation_don_vi);
-                }
-
-            }
-        });
     }
 
     private void loadFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragmentContainer, fragment);
         transaction.commit();
+        Log.d("MainActivity", "Loaded fragment: " + fragment.getClass().getSimpleName());
     }
 }
