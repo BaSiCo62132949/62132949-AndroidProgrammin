@@ -2,6 +2,7 @@ package ntu.basico.baithick_62132949;
 
 import android.provider.BaseColumns;
 
+// Định nghĩa cấu trúc bảng lịch sử
 public final class HistoryContract {
     private HistoryContract() {}
 

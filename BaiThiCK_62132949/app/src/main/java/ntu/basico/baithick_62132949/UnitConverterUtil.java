@@ -44,7 +44,7 @@ public class UnitConverterUtil {
     public static final String SQ_FEET = "Feet vuông (ft²)";
     public static final String ACRE = "Acre (ac)";
 
-
+    // Chuyển đổi đơn vị và trả về kết quả
     public static double convert(double value, String fromUnit, String toUnit, String unitType) {
         Log.i(TAG_UTIL, "Attempting to convert: value=" + value + ", fromUnit='" + fromUnit + "', toUnit='" + toUnit + "', unitType='" + unitType + "'");
 
@@ -69,6 +69,7 @@ public class UnitConverterUtil {
         }
     }
 
+    // Các hàm chuyển đổi đơn vị
     private static double convertLength(double value, String fromUnit, String toUnit) {
         double valueInMeters;
         switch (fromUnit) {

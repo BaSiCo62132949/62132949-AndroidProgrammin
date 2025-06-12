@@ -15,17 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
-import android.widget.Spinner;
-import android.widget.ArrayAdapter;
-import java.util.ArrayList;
-import java.util.List;
-import android.widget.AdapterView;
-import android.os.Handler;
-import android.os.Looper;
-import android.widget.Toast;
+
 
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.materialswitch.MaterialSwitch;
 
 public class SettingsFragment extends Fragment {
 

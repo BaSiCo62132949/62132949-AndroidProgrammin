@@ -21,24 +21,24 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
 
     private static final String TAG_CALC = "MayTinhFragment"; // Đổi tag cho dễ lọc
 
-    private TextView textPhepTinh;
-    private TextView textKetQua;
+    private TextView textPhepTinh; // Hiển thị biểu thức đã nhập
+    private TextView textKetQua; // Hiển thị kết quả tính toán
 
     private StringBuilder bieuThucHienTai = new StringBuilder();
     private boolean soCuoiCungLaSo; // True nếu ký tự cuối được thêm là số hoặc dấu đóng ngoặc ')' hoặc '%'
-    private boolean trangThaiLoi;
-    private boolean soCuoiCungLaDauCham;
+    private boolean trangThaiLoi; // True nếu đang có lỗi
+    private boolean soCuoiCungLaDauCham; // True nếu ký tự cuối là dấu chấm
     private int soNgoacMo = 0; // Đếm số lượng ngoặc mở chưa được đóng
     private TextView tieuDeMayTinh; // Không cần thiết nếu chỉ hiển thị text cố định
-    private ImageButton nutLuuLichSuTinhToan;
-    private HistoryDbHelper dbHelperMayTinh;
-    private String bieuThucCuoiCungTruocKhiBang = "";
+    private ImageButton nutLuuLichSuTinhToan; // Nút để lưu phép tính vào lịch sử
+    private HistoryDbHelper dbHelperMayTinh; // CSDL lưu lịch sử phép tính
+    private String bieuThucCuoiCungTruocKhiBang = ""; // Lưu biểu thức trước khi nhấn "="
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_calculator, container, false);
-
+        // Khởi tạo, ánh xạ và gọi các hàm
         textPhepTinh = view.findViewById(R.id.textPhepTinh);
         textKetQua = view.findViewById(R.id.textKetQua);
         nutLuuLichSuTinhToan = view.findViewById(R.id.nutLuuLichSuTinhToan);
@@ -53,7 +53,7 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
         xoaManHinh(); // Khởi tạo màn hình sạch
         return view;
     }
-
+    // Các hàm xử lý sự kiện cho các nút
     private void ganSuKienChoNutSo(View viewCha) {
         int[] cacNutSo = {R.id.nut0, R.id.nut1, R.id.nut2, R.id.nut3,
                 R.id.nut4, R.id.nut5, R.id.nut6, R.id.nut7, R.id.nut8, R.id.nut9,
@@ -64,7 +64,6 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
             }
         }
     }
-
     private void ganSuKienChoNutPhepToan(View viewCha) {
         int[] cacNutPhepToan = {R.id.nutCong, R.id.nutTru, R.id.nutNhan, R.id.nutChia,
                 R.id.nutPhanTram, R.id.nutNgoac, R.id.nutXoaHet, R.id.nutBang};
@@ -108,10 +107,11 @@ public class CalculatorFragment extends Fragment implements View.OnClickListener
         capNhatManHinhPhepTinh();
     }
 
+    // Các hàm cập nhật và hiển thị trên giao diện
     private void capNhatManHinhPhepTinh() {
         textPhepTinh.setText(bieuThucHienTai.toString());
     }
-
+    // Các hàm xử lý các ký tự
     private void themSoHoacDauThapPhan(String kyTu) {
         if (trangThaiLoi) return;
 

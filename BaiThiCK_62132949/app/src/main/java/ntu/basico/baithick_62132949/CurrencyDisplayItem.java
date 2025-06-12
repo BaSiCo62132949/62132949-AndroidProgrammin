@@ -9,6 +9,7 @@ public class CurrencyDisplayItem {
     private boolean isBaseCurrency; // Có phải là đồng tiền cơ sở đang nhập không
 
     public CurrencyDisplayItem(String code, double rateAgainstBase) {
+        // Khởi tạo các thuộc tính mặc định
         this.code = code;
         this.rateAgainstBase = rateAgainstBase;
         this.displayValue = "0"; // Mặc định
@@ -18,6 +19,7 @@ public class CurrencyDisplayItem {
     }
 
     private String mapCurrencyCodeToFlagResourceName(String currencyCode) {
+        // Chuyển đổi mã tiền tệ thành tên file cờ tương ứng
         switch (currencyCode.toUpperCase()) {
             case "VND":
                 return "flag_vn";

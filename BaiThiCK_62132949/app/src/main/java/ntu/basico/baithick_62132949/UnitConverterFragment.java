@@ -36,18 +36,17 @@ public class UnitConverterFragment extends Fragment {
     private static final String TAG_FRAGMENT = "UnitConverterFrag";
 
     private TabLayout tabLayoutLoaiDonVi;
-    private TextInputEditText editTextGiaTriNguon;
-    private Spinner spinnerDonViNguon;
-    private TextInputEditText textViewKetQua;
-    private Spinner spinnerDonViDich;
-    private ImageButton buttonHoanDoi;
-    private MaterialButton buttonLuu;
+    private LinearLayout linearLayoutUnitTypeButtons; // Layout chứa các nút chọn loại đơn vị
+    private TextInputEditText editTextGiaTriNguon; // Ô nhập giá trị nguồn cần chuyển đổi
+    private Spinner spinnerDonViNguon; // Spinner chọn đơn vị nguồn
+    private TextInputEditText textViewKetQua; // Ô hiển thị kết quả sau khi chuyển đổi
+    private Spinner spinnerDonViDich; // Spinner chọn đơn vị đích
+    private ImageButton buttonHoanDoi; // Nút để hoán đổi đơn vị nguồn và đích
+    private MaterialButton buttonLuu; // Nút để lưu kết quả chuyển đổi vào lịch sử
 
-    private LinearLayout linearLayoutUnitTypeButtons;
-    private List<View> unitTypeButtonViews = new ArrayList<>();
+    private List<View> unitTypeButtonViews = new ArrayList<>(); // Danh sách các View của nút chọn loại đơn vị
     private String[] unitTypesArray;
     private String currentUnitTypeString;
-    private int selectedTypeButtonIndex = -1;
 
     private HistoryDbHelper dbHelper;
 
@@ -55,7 +54,7 @@ public class UnitConverterFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_unit_converter, container, false);
-
+        // khởi tạo và gọi các hàm
         linearLayoutUnitTypeButtons = view.findViewById(R.id.linearLayoutUnitTypeButtons);
         editTextGiaTriNguon = view.findViewById(R.id.editTextGiaTriNguon);
         spinnerDonViNguon = view.findViewById(R.id.spinnerDonViNguon);
@@ -70,6 +69,7 @@ public class UnitConverterFragment extends Fragment {
         setupUnitTypeButtons();
         setupListeners();
 
+        // Chọn loại đơn vị mặc định
         if (unitTypesArray != null && unitTypesArray.length > 0) { // Kiểm tra null và độ dài
             selectUnitType(0); // Chọn loại đầu tiên
         }
@@ -77,29 +77,73 @@ public class UnitConverterFragment extends Fragment {
         return view;
     }
 
-    private void setupTabs() {
-        for (String type : unitTypesArray) {
-            tabLayoutLoaiDonVi.addTab(tabLayoutLoaiDonVi.newTab().setText(type));
-        }
+    // Tạo và thêm các nút chọn loại đơn vị vào linearLayoutUnitTypeButtons
+    private void setupUnitTypeButtons() {
+        linearLayoutUnitTypeButtons.removeAllViews(); // Xóa các nút cũ nếu có
+        unitTypeButtonViews.clear();
+        LayoutInflater inflater = LayoutInflater.from(getContext());
 
-        tabLayoutLoaiDonVi.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                if (tab != null && tab.getText() != null) {
-                    currentUnitTypeString = tab.getText().toString(); // Gán tên loại đơn vị
-                    Log.d(TAG_FRAGMENT, "Tab selected: " + currentUnitTypeString);
-                    updateSpinnersForSelectedType();
-                    editTextGiaTriNguon.setText("");
-                    textViewKetQua.setText("");
-                }
-            }
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {}
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {}
-        });
+        for (int i = 0; i < unitTypesArray.length; i++) {
+            String typeName = unitTypesArray[i];
+            View buttonView = inflater.inflate(R.layout.button_unit_type_item, linearLayoutUnitTypeButtons, false);
+
+            ImageView iconView = buttonView.findViewById(R.id.imageViewUnitTypeIcon);
+            TextView nameView = buttonView.findViewById(R.id.textViewUnitTypeName);
+
+            nameView.setText(typeName);
+            // Đặt icon dựa trên typeName
+            iconView.setImageResource(getIconForUnitType(typeName));
+
+            final int index = i;
+            buttonView.setOnClickListener(v -> selectUnitType(index));
+
+            linearLayoutUnitTypeButtons.addView(buttonView);
+            unitTypeButtonViews.add(buttonView);
+        }
     }
 
+    // Hàm chọn loại đơn vị và cập nhật UI
+    private void selectUnitType(int index) {
+        if (index < 0 || index >= unitTypesArray.length) return;
+
+        currentUnitTypeString = unitTypesArray[index];
+        Log.d(TAG_FRAGMENT, "Unit type selected: " + currentUnitTypeString);
+
+        // Cập nhật trạng thái selected cho các nút
+        for (int i = 0; i < unitTypeButtonViews.size(); i++) {
+            View btnView = unitTypeButtonViews.get(i);
+            ImageView icon = btnView.findViewById(R.id.imageViewUnitTypeIcon);
+            TextView text = btnView.findViewById(R.id.textViewUnitTypeName);
+            if (i == index) {
+                // Nút được chọn: thay đổi background hoặc màu icon/text
+                btnView.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.app_secondary)); // Tạo màu này
+                icon.setColorFilter(ContextCompat.getColor(requireContext(), R.color.app_text_primary)); // Tạo màu này
+                text.setTextColor(ContextCompat.getColor(requireContext(), R.color.app_text_primary)); // Tạo màu này
+            } else {
+                // Nút không được chọn: trở về trạng thái bình thường
+                btnView.setBackgroundColor(Color.TRANSPARENT); // Tạo drawable này
+                icon.setColorFilter(ContextCompat.getColor(requireContext(), R.color.white)); // Tạo màu này
+                text.setTextColor(ContextCompat.getColor(requireContext(), R.color.white)); // Tạo màu này
+            }
+        }
+
+        updateSpinnersForSelectedType(); // Hàm này giữ nguyên logic
+        editTextGiaTriNguon.setText("");
+        textViewKetQua.setText("");
+    }
+
+    // Hàm để lấy resource ID của icon dựa trên tên loại đơn vị
+    private int getIconForUnitType(String unitTypeName) {
+        if (unitTypeName.equals(unitTypesArray[0])) return R.drawable.ic_type_length; // Độ dài
+        if (unitTypeName.equals(unitTypesArray[1])) return R.drawable.ic_type_weight; // Khối lượng
+        if (unitTypeName.equals(unitTypesArray[2])) return R.drawable.ic_type_temperature; // Nhiệt độ
+        if (unitTypeName.equals(unitTypesArray[3])) return R.drawable.ic_type_time; // Thời gian
+        if (unitTypeName.equals(unitTypesArray[4])) return R.drawable.ic_type_area; // Diện tích
+        return R.drawable.info; // Icon mặc định
+    }
+
+    // Cập nhật nội dung (danh sách đơn vị con) cho spinnerDonViNguon và spinnerDonViDich
+    // dựa trên currentUnitTypeString (loại đơn vị vừa được chọn).
     private void updateSpinnersForSelectedType() {
         if (currentUnitTypeString == null || currentUnitTypeString.isEmpty()) {
             Log.e(TAG_FRAGMENT, "currentUnitTypeString is null or empty in updateSpinners.");
@@ -145,6 +189,8 @@ public class UnitConverterFragment extends Fragment {
         spinnerDonViNguon.post(this::performConversion);
     }
 
+    // Gán các listener (TextWatcher, OnItemSelectedListener, OnClickListener) cho các View tương tác
+    // như ô nhập liệu, Spinners, nút Hoán đổi, nút Lưu
     private void setupListeners() {
         editTextGiaTriNguon.addTextChangedListener(new TextWatcher() {
             @Override
@@ -203,6 +249,8 @@ public class UnitConverterFragment extends Fragment {
         });
     }
 
+    // Thực hiện phép chuyển đổi chính: lấy giá trị nhập, đơn vị nguồn/đích, loại đơn vị;
+    // gọi UnitConverterUtil.convert(); định dạng và hiển thị kết quả hoặc thông báo lỗi.
     private void performConversion() {
         String giaTriNguonStr = editTextGiaTriNguon.getText().toString();
         if (giaTriNguonStr.isEmpty() || giaTriNguonStr.equals(".") || giaTriNguonStr.equals("-") || giaTriNguonStr.equals("+")) {
@@ -265,68 +313,4 @@ public class UnitConverterFragment extends Fragment {
         }
     }
 
-    private void setupUnitTypeButtons() {
-        linearLayoutUnitTypeButtons.removeAllViews(); // Xóa các nút cũ nếu có
-        unitTypeButtonViews.clear();
-        LayoutInflater inflater = LayoutInflater.from(getContext());
-
-        for (int i = 0; i < unitTypesArray.length; i++) {
-            String typeName = unitTypesArray[i];
-            View buttonView = inflater.inflate(R.layout.button_unit_type_item, linearLayoutUnitTypeButtons, false);
-
-            ImageView iconView = buttonView.findViewById(R.id.imageViewUnitTypeIcon);
-            TextView nameView = buttonView.findViewById(R.id.textViewUnitTypeName);
-
-            nameView.setText(typeName);
-            // Đặt icon dựa trên typeName
-            iconView.setImageResource(getIconForUnitType(typeName));
-
-            final int index = i;
-            buttonView.setOnClickListener(v -> selectUnitType(index));
-
-            linearLayoutUnitTypeButtons.addView(buttonView);
-            unitTypeButtonViews.add(buttonView);
-        }
-    }
-
-    // Hàm chọn loại đơn vị và cập nhật UI
-    private void selectUnitType(int index) {
-        if (index < 0 || index >= unitTypesArray.length) return;
-
-        currentUnitTypeString = unitTypesArray[index];
-        Log.d(TAG_FRAGMENT, "Unit type selected: " + currentUnitTypeString);
-
-        // Cập nhật trạng thái selected cho các nút
-        for (int i = 0; i < unitTypeButtonViews.size(); i++) {
-            View btnView = unitTypeButtonViews.get(i);
-            ImageView icon = btnView.findViewById(R.id.imageViewUnitTypeIcon);
-            TextView text = btnView.findViewById(R.id.textViewUnitTypeName);
-            if (i == index) {
-                // Nút được chọn: thay đổi background hoặc màu icon/text
-                btnView.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.app_secondary)); // Tạo màu này
-                icon.setColorFilter(ContextCompat.getColor(requireContext(), R.color.app_text_primary)); // Tạo màu này
-                text.setTextColor(ContextCompat.getColor(requireContext(), R.color.app_text_primary)); // Tạo màu này
-            } else {
-                // Nút không được chọn: trở về trạng thái bình thường
-                btnView.setBackgroundColor(Color.TRANSPARENT); // Tạo drawable này
-                icon.setColorFilter(ContextCompat.getColor(requireContext(), R.color.white)); // Tạo màu này
-                text.setTextColor(ContextCompat.getColor(requireContext(), R.color.white)); // Tạo màu này
-            }
-        }
-
-        updateSpinnersForSelectedType(); // Hàm này giữ nguyên logic
-        editTextGiaTriNguon.setText("");
-        textViewKetQua.setText("");
-    }
-
-
-    // Hàm để lấy resource ID của icon dựa trên tên loại đơn vị
-    private int getIconForUnitType(String unitTypeName) {
-        if (unitTypeName.equals(unitTypesArray[0])) return R.drawable.ic_type_length; // Độ dài
-        if (unitTypeName.equals(unitTypesArray[1])) return R.drawable.ic_type_weight; // Khối lượng
-        if (unitTypeName.equals(unitTypesArray[2])) return R.drawable.ic_type_temperature; // Nhiệt độ
-        if (unitTypeName.equals(unitTypesArray[3])) return R.drawable.ic_type_time; // Thời gian
-        if (unitTypeName.equals(unitTypesArray[4])) return R.drawable.ic_type_area; // Diện tích
-        return R.drawable.info; // Icon mặc định
-    }
 }

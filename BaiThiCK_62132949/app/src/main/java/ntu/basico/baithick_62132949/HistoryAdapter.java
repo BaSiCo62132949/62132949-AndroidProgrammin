@@ -20,6 +20,7 @@ import java.util.Locale;
 import ntu.basico.baithick_62132949.R;
 import ntu.basico.baithick_62132949.HistoryItem;
 
+// Adapter cho RecyclerView hiển thị lịch sử
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder> {
 
     private List<HistoryItem> historyItemList;

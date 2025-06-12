@@ -30,33 +30,35 @@ import ntu.basico.baithick_62132949.HistoryItem;
 public class HistoryFragment extends Fragment implements HistoryAdapter.OnHistoryItemInteractionListener {
 
     private static final String TAG = "HistoryFragment";
-    private RecyclerView recyclerViewHistory;
-    private HistoryAdapter historyAdapter;
-    private List<HistoryItem> historyItemList;
-    private HistoryDbHelper dbHelper;
-    private TextView textViewNoHistory;
-    private MaterialButton buttonDeleteAllHistory;
+    private RecyclerView recyclerViewHistory; // Hiển thị danh sách các mục lịch sử
+    private TextView textViewNoHistory; // Hiển thị thông báo khi không có lịch sử
+    private MaterialButton buttonDeleteAllHistory; // Nút để xóa toàn bộ lịch sử
+    private HistoryAdapter historyAdapter; // Adapter để hiển thị danh sách
+    private List<HistoryItem> historyItemList; // Danh sách các mục lịch sử
+    private HistoryDbHelper dbHelper;     // CSDL để lưu trữ lịch sử
 
-    private SearchView searchViewHistory;
-    private List<HistoryItem> originalHistoryList;
+
+
+    private SearchView searchViewHistory; // SearchView để tìm kiếm
+    private List<HistoryItem> originalHistoryList; // Danh sách gốc để lọc
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_history, container, false);
-
+        // Khởi tạo, ánh xạ và gọi các hàm
         recyclerViewHistory = view.findViewById(R.id.recyclerViewHistory);
         textViewNoHistory = view.findViewById(R.id.textViewNoHistory);
         buttonDeleteAllHistory = view.findViewById(R.id.buttonDeleteAllHistory);
         searchViewHistory = view.findViewById(R.id.searchViewHistory);
 
         dbHelper = new HistoryDbHelper(requireContext());
-        historyItemList = new ArrayList<>();
-        originalHistoryList = new ArrayList<>();
+        historyItemList = new ArrayList<>(); // Danh sách hiển thị
+        originalHistoryList = new ArrayList<>(); // Danh sách gốc để lọc
 
-        setupRecyclerView();
-        setupDeleteAllButton();
-        setupSearchView();
+        setupRecyclerView(); // cấu hình RecyclerView
+        setupDeleteAllButton(); // gắn sự kiện cho nút xóa toàn bộ
+        setupSearchView(); // gắn sự kiện cho SearchView
 
         return view;
     }
@@ -64,18 +66,21 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnHistor
     @Override
     public void onResume() {
         super.onResume();
+        // Khi Fragment trở lại, tải lại dữ liệu từ CSDL
         loadHistoryData();
         Log.d(TAG, "onResume: History data reloaded.");
     }
 
+    // Cấu hình RecyclerView : hiển thị danh sách các mục lịch sử
     private void setupRecyclerView() {
         recyclerViewHistory.setLayoutManager(new LinearLayoutManager(getContext()));
         historyAdapter = new HistoryAdapter(getContext(), historyItemList, this);
         recyclerViewHistory.setAdapter(historyAdapter);
     }
-
+    // gắn sự kiện cho nút xóa toàn bộ
     private void setupDeleteAllButton() {
         buttonDeleteAllHistory.setOnClickListener(v -> {
+            // Kiểm tra xem có dữ liệu lịch sử không
             if (historyItemList == null || historyItemList.isEmpty()) {
                 Toast.makeText(getContext(), "Không có lịch sử để xóa.", Toast.LENGTH_SHORT).show();
                 return;
@@ -83,13 +88,13 @@ public class HistoryFragment extends Fragment implements HistoryAdapter.OnHistor
             showDeleteAllConfirmationDialog();
         });
     }
-
+    // tải lại dữ liệu từ CSDL, cập nhật UI, và kiểm tra xem có dữ liệu lịch sử không
     private void loadHistoryData() {
         Log.d(TAG, "loadHistoryData: Loading data from database...");
         List<HistoryItem> itemsFromDb = dbHelper.getAllHistoryItems();
 
-        originalHistoryList.clear();
-        originalHistoryList.addAll(itemsFromDb);
+        originalHistoryList.clear();// Xóa dữ liệu cũ trước khi thêm mới
+        originalHistoryList.addAll(itemsFromDb); // Thêm dữ liệu mới từ CSDL
         Log.d(TAG, "loadHistoryData: Loaded " + originalHistoryList.size() + " original items.");
 
         String currentQuery = searchViewHistory.getQuery().toString();

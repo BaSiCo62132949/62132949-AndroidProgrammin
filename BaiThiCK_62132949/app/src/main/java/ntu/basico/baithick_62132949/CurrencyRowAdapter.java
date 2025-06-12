@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
+// Adapter cho RecyclerView hiển thị danh sách đồng tiền
 public class CurrencyRowAdapter extends RecyclerView.Adapter<CurrencyRowAdapter.CurrencyViewHolder> {
 
     private List<CurrencyDisplayItem> currencyItems;

@@ -38,15 +38,15 @@ public class CurrencyConverterFragment extends Fragment implements CurrencyRowAd
     private static final String TAG = "CurrencyNeoFrag";
     private static final String API_URL = "https://open.er-api.com/v6/latest/USD"; // Hoặc API của bạn
 
-    private RecyclerView recyclerViewCurrencies;
-    private CurrencyRowAdapter adapter;
+    private RecyclerView recyclerViewCurrencies; // Hiển thị danh sách các hàng tiền tệ
+    private CurrencyRowAdapter adapter; // Adapter cho RecyclerView để hiển thị danh sách
     private List<CurrencyDisplayItem> displayItems = new ArrayList<>();
     private Map<String, Double> exchangeRates = new HashMap<>(); // Tỷ giá so với USD
 
-    private TextView textViewLastUpdate;
-    private ImageButton buttonRefreshRatesTop;
-    private ProgressBar progressBarLoading;
-    private TextView textViewErrorMessage;
+    private TextView textViewLastUpdate;  // Hiển thị thời gian cập nhật tỷ giá lần cuối
+    private ImageButton buttonRefreshRatesTop; // Nút để người dùng làm mới tỷ giá thủ công
+    private ProgressBar progressBarLoading;  // Vòng xoay hiển thị khi đang tải dữ liệu
+    private TextView textViewErrorMessage;  // Hiển thị thông báo lỗi
 
     private RequestQueue requestQueue;
     private NumberFormat numberFormatter;
@@ -56,7 +56,7 @@ public class CurrencyConverterFragment extends Fragment implements CurrencyRowAd
     private String currentInputValue = "1"; // Giá trị người dùng nhập cho base currency
 
     // Bàn phím
-    private LinearLayout customKeyboardLayout;
+    private LinearLayout customKeyboardLayout; // Layout chứa các nút bàn phím tùy chỉnh
     private ImageButton buttonSaveHistoryTop;
     private HistoryDbHelper dbHelper;
 
@@ -92,6 +92,7 @@ public class CurrencyConverterFragment extends Fragment implements CurrencyRowAd
         return view;
     }
 
+    // Thiết lập sự kiện click cho các nút trên bàn phím tùy chỉnh
     private void setupKeyboardListeners(View rootView) {
         View.OnClickListener numberClickListener = v -> {
             Button b = (Button) v;
@@ -135,6 +136,7 @@ public class CurrencyConverterFragment extends Fragment implements CurrencyRowAd
         rootView.findViewById(R.id.buttonKeyEquals).setEnabled(false);
     }
 
+    // Nối số hoặc dấu thập phân vào chuỗi nhập liệu hiện tại
     private void appendNumberToInput(String digit) {
         if (currentInputValue.equals("0") && !digit.equals(",")) {
             currentInputValue = digit;
@@ -148,6 +150,7 @@ public class CurrencyConverterFragment extends Fragment implements CurrencyRowAd
     }
 
 
+    // Gửi yêu cầu đến API để lấy tỷ giá mới nhất
     private void fetchExchangeRates() {
         progressBarLoading.setVisibility(View.VISIBLE);
         textViewErrorMessage.setVisibility(View.GONE);
@@ -204,6 +207,7 @@ public class CurrencyConverterFragment extends Fragment implements CurrencyRowAd
     }
 
 
+    // Chuẩn bị danh sách các đối tượng CurrencyDisplayItem để hiển thị trên RecyclerView
     private void setupDisplayItems(List<String> codesToDisplay) {
         displayItems.clear();
         for (String code : codesToDisplay) {
@@ -226,22 +230,8 @@ public class CurrencyConverterFragment extends Fragment implements CurrencyRowAd
         adapter.notifyDataSetChanged();
     }
 
-    // Hàm ví dụ để lấy tên file cờ
-    private String getFlagResourceNameForCode(String code) {
 
-        switch (code.toUpperCase()) {
-            case "VND": return "flag_vn";
-            case "USD": return "flag_us";
-            case "CNY": return "flag_cn";
-            case "KRW": return "flag_kr";
-            case "JPY": return "flag_jp";
-            case "EUR": return "flag_eu";
-
-            default: return "flag_default";
-        }
-    }
-
-
+    // Tính toán lại giá trị cho tất cả các loại tiền tệ dựa trên currentInputValue và tỷ giá
     private void updateConversions() {
         if (exchangeRates.isEmpty()) return;
 
@@ -308,6 +298,7 @@ public class CurrencyConverterFragment extends Fragment implements CurrencyRowAd
 
     }
 
+    // Đặt đồng tiền cơ sở trong RecyclerView dựa trên mã tiền tệ
     private void setBaseCurrencyByCode(String code) {
         for (int i = 0; i < displayItems.size(); i++) {
             if (displayItems.get(i).getCode().equals(code)) {
@@ -322,6 +313,7 @@ public class CurrencyConverterFragment extends Fragment implements CurrencyRowAd
     }
 
 
+    // Cập nhật TextView hiển thị thời gian tỷ giá được làm mới lần cuối
     private void updateTimestamp(long unixTimestamp) {
         try {
             Date date = new Date(unixTimestamp * 1000L);
@@ -332,6 +324,7 @@ public class CurrencyConverterFragment extends Fragment implements CurrencyRowAd
         }
     }
 
+    // Hiển thị thông báo lỗi
     private void handleApiError(String message) {
         Log.e(TAG, message);
         textViewErrorMessage.setText(message);
@@ -339,12 +332,14 @@ public class CurrencyConverterFragment extends Fragment implements CurrencyRowAd
         // Toast.makeText(getContext(), message, Toast.LENGTH_LONG).show();
     }
 
+    //  click cho nút "Lưu lịch sử"
     private void setupSaveButtonListener() {
         buttonSaveHistoryTop.setOnClickListener(v -> {
             saveCurrentConversionToHistory();
         });
     }
 
+    // Lưu phép chuyển đổi tiền tệ hiện tại vào cơ sở dữ liệu lịch sử
     private void saveCurrentConversionToHistory() {
         if (displayItems.isEmpty() || exchangeRates.isEmpty()) {
             Toast.makeText(getContext(), "Không có dữ liệu để lưu.", Toast.LENGTH_SHORT).show();
@@ -402,8 +397,6 @@ public class CurrencyConverterFragment extends Fragment implements CurrencyRowAd
 
 
         String conversionType = "Tiền tệ";
-
-
         boolean success = dbHelper.insertHistory(conversionType, sourceValueStr, sourceUnit, resultValueStr, resultUnit);
 
         if (success) {

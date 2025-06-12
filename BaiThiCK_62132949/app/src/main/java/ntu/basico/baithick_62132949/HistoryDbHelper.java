@@ -12,6 +12,7 @@ import ntu.basico.baithick_62132949.HistoryItem;
 import java.util.ArrayList;
 import java.util.List;
 
+// Hỗ trợ truy cập và thao tác với database lịch sử
 public class HistoryDbHelper extends SQLiteOpenHelper {
     private static final String TAG = "HistoryDbHelper";
 
